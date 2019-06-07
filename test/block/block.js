@@ -1,15 +1,18 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
-var bitcore = require('../..');
+var orecore = require('../..');
 var BN = require('../../lib/crypto/bn');
-var BufferReader = bitcore.encoding.BufferReader;
-var BufferWriter = bitcore.encoding.BufferWriter;
-var BlockHeader = bitcore.BlockHeader;
-var Block = bitcore.Block;
+var BufferReader = orecore.encoding.BufferReader;
+var BufferWriter = orecore.encoding.BufferWriter;
+var BlockHeader = orecore.BlockHeader;
+var Block = orecore.Block;
 var chai = require('chai');
 var fs = require('fs');
 var should = chai.should();
-var Transaction = bitcore.Transaction;
+var Transaction = orecore.Transaction;
 
 // Block hash: 00000122140054091bf33489e418cbb1deb49c6e27da2430d9fa0b0104a0a962
 var dataRawBlockBuffer = fs.readFileSync('test/data/blk46074-testnet.dat');
@@ -21,8 +24,8 @@ var dataBlocks = require('../data/galactrumd/blocks');
 describe('Block', function() {
 
   var blockhex = data.blockhex;
-  var blockbuf = new Buffer(blockhex, 'hex');
-  var bh = BlockHeader.fromBuffer(new Buffer(data.blockheaderhex, 'hex'));
+  var blockbuf = Buffer.from(blockhex, 'hex');
+  var bh = BlockHeader.fromBuffer(Buffer.from(data.blockheaderhex, 'hex'));
   var txs = [];
   JSON.parse(dataJson).transactions.forEach(function(tx) {
     txs.push(new Transaction().fromObject(tx));
@@ -60,7 +63,7 @@ describe('Block', function() {
 
     it('should properly deserialize blocks', function() {
       dataBlocks.forEach(function(block) {
-        var b = Block.fromBuffer(new Buffer(block.data, 'hex'));
+        var b = Block.fromBuffer(Buffer.from(block.data, 'hex'));
         b.transactions.length.should.equal(block.transactions);
       });
     });
@@ -213,7 +216,7 @@ describe('Block', function() {
 
     it('should return the correct hash of the genesis block', function() {
       var block = Block.fromBuffer(genesisbuf);
-      var blockhash = new Buffer(Array.apply([], new Buffer(genesisidhex, 'hex')).reverse());
+      var blockhash = Buffer.from(Array.apply([], Buffer.from(genesisidhex, 'hex')).reverse());
       block._getHash().toString('hex').should.equal(blockhash.toString('hex'));
     });
   });

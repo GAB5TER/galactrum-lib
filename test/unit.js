@@ -1,11 +1,14 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
 var should = require('chai').should();
 var expect = require('chai').expect;
 
-var bitcore = require('..');
-var errors = bitcore.errors;
-var Unit = bitcore.Unit;
+var orecore = require('..');
+var errors = orecore.errors;
+var Unit = orecore.Unit;
 
 describe('Unit', function() {
 

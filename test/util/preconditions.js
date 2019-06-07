@@ -1,11 +1,14 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
 var should = require('chai').should();
 
-var bitcore = require('../..');
-var errors = bitcore.errors;
-var $ = bitcore.util.preconditions;
-var PrivateKey = bitcore.PrivateKey;
+var orecore = require('../..');
+var errors = orecore.errors;
+var $ = orecore.util.preconditions;
+var PrivateKey = orecore.PrivateKey;
 
 describe('preconditions', function() {
 

@@ -1,3 +1,6 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
 /* jshint unused: false */
@@ -7,12 +10,12 @@ var expect = require('chai').expect;
 var _ = require('lodash');
 var sinon = require('sinon');
 
-var bitcore = require('../../..');
-var BufferReader = bitcore.encoding.BufferReader;
-var BufferWriter = bitcore.encoding.BufferWriter;
+var orecore = require('../../..');
+var BufferReader = orecore.encoding.BufferReader;
+var BufferWriter = orecore.encoding.BufferWriter;
 
-var Proposal = bitcore.GovObject.Proposal;
-var errors = bitcore.errors;
+var Proposal = orecore.GovObject.Proposal;
+var errors = orecore.errors;
 
 // TODO: create Proposal from object
 
@@ -253,7 +256,7 @@ describe('Proposal', function() {
   });
 
   it('should create a new proposal from a hex string', function() {
-    var Proposal = bitcore.GovObject.Proposal;
+    var Proposal = orecore.GovObject.Proposal;
     var proposal = new Proposal(expectedHex);
 
     expect(proposal instanceof Proposal);

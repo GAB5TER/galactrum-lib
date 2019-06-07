@@ -1,16 +1,19 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
 var should = require('chai').should();
-var bitcore = require('../..');
-var BN = bitcore.crypto.BN;
-var BufferReader = bitcore.encoding.BufferReader;
-var BufferWriter = bitcore.encoding.BufferWriter;
-var Varint = bitcore.encoding.Varint;
+var orecore = require('../..');
+var BN = orecore.crypto.BN;
+var BufferReader = orecore.encoding.BufferReader;
+var BufferWriter = orecore.encoding.BufferWriter;
+var Varint = orecore.encoding.Varint;
 
 describe('Varint', function() {
 
   it('should make a new varint', function() {
-    var buf = new Buffer('00', 'hex');
+    var buf = Buffer.from('00', 'hex');
     var varint = new Varint(buf);
     should.exist(varint);
     varint.buf.toString('hex').should.equal('00');
@@ -25,9 +28,9 @@ describe('Varint', function() {
   });
 
   describe('#set', function() {
-    
+
     it('should set a buffer', function() {
-      var buf = new Buffer('00', 'hex');
+      var buf = Buffer.from('00', 'hex');
       var varint = Varint().set({buf: buf});
       varint.buf.toString('hex').should.equal('00');
       varint.set({});
@@ -37,7 +40,7 @@ describe('Varint', function() {
   });
 
   describe('#fromString', function() {
-    
+
     it('should set a buffer', function() {
       var buf = BufferWriter().writeVarintNum(5).concat();
       var varint = Varint().fromString(buf.toString('hex'));
@@ -47,7 +50,7 @@ describe('Varint', function() {
   });
 
   describe('#toString', function() {
-    
+
     it('should return a buffer', function() {
       var buf = BufferWriter().writeVarintNum(5).concat();
       var varint = Varint().fromString(buf.toString('hex'));
@@ -57,7 +60,7 @@ describe('Varint', function() {
   });
 
   describe('#fromBuffer', function() {
-    
+
     it('should set a buffer', function() {
       var buf = BufferWriter().writeVarintNum(5).concat();
       var varint = Varint().fromBuffer(buf);
@@ -67,7 +70,7 @@ describe('Varint', function() {
   });
 
   describe('#fromBufferReader', function() {
-    
+
     it('should set a buffer reader', function() {
       var buf = BufferWriter().writeVarintNum(5).concat();
       var br = BufferReader(buf);
@@ -78,7 +81,7 @@ describe('Varint', function() {
   });
 
   describe('#fromBN', function() {
-    
+
     it('should set a number', function() {
       var varint = Varint().fromBN(new BN(5));
       varint.toNumber().should.equal(5);
@@ -87,7 +90,7 @@ describe('Varint', function() {
   });
 
   describe('#fromNumber', function() {
-    
+
     it('should set a number', function() {
       var varint = Varint().fromNumber(5);
       varint.toNumber().should.equal(5);
@@ -96,7 +99,7 @@ describe('Varint', function() {
   });
 
   describe('#toBuffer', function() {
-    
+
     it('should return a buffer', function() {
       var buf = BufferWriter().writeVarintNum(5).concat();
       var varint = Varint(buf);
@@ -106,7 +109,7 @@ describe('Varint', function() {
   });
 
   describe('#toBN', function() {
-    
+
     it('should return a buffer', function() {
       var varint = Varint(5);
       varint.toBN().toString().should.equal(new BN(5).toString());
@@ -115,7 +118,7 @@ describe('Varint', function() {
   });
 
   describe('#toNumber', function() {
-    
+
     it('should return a buffer', function() {
       var varint = Varint(5);
       varint.toNumber().should.equal(5);

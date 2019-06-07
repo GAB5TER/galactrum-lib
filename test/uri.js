@@ -1,11 +1,14 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
 var chai = chai || require('chai');
-var bitcore = require('..');
+var orecore = require('..');
 var expect = chai.expect;
-var Networks = bitcore.Networks;
+var Networks = orecore.Networks;
 var should = chai.should();
-var URI = bitcore.URI;
+var URI = orecore.URI;
 
 describe('URI', function() {
   /* jshint maxstatements: 30 */
@@ -17,19 +20,19 @@ describe('URI', function() {
     URI.parse.bind(URI, 'badURI').should.throw(TypeError);
 
     uri = URI.parse('galactrum:');
-    expect(uri.address).to.be.undefined();
-    expect(uri.amount).to.be.undefined();
-    expect(uri.otherParam).to.be.undefined();
+    expect(uri.address).to.be.undefined;
+    expect(uri.amount).to.be.undefined;
+    expect(uri.otherParam).to.be.undefined;
 
     uri = URI.parse('galactrum:GMeo4uMPsr1ZkNP1iu3dLDBpR5AhmKnK4P');
     uri.address.should.equal('GMeo4uMPsr1ZkNP1iu3dLDBpR5AhmKnK4P');
-    expect(uri.amount).to.be.undefined();
-    expect(uri.otherParam).to.be.undefined();
+    expect(uri.amount).to.be.undefined;
+    expect(uri.otherParam).to.be.undefined;
 
     uri = URI.parse('galactrum:GMeo4uMPsr1ZkNP1iu3dLDBpR5AhmKnK4P?amount=123.22');
     uri.address.should.equal('GMeo4uMPsr1ZkNP1iu3dLDBpR5AhmKnK4P');
     uri.amount.should.equal('123.22');
-    expect(uri.otherParam).to.be.undefined();
+    expect(uri.otherParam).to.be.undefined;
 
     uri = URI.parse('galactrum:GMeo4uMPsr1ZkNP1iu3dLDBpR5AhmKnK4P?amount=123.22' +
                     '&other-param=something&req-extra=param');
@@ -79,7 +82,7 @@ describe('URI', function() {
 
     it('parses address', function() {
       uri = new URI('galactrum:GMeo4uMPsr1ZkNP1iu3dLDBpR5AhmKnK4P');
-      uri.address.should.be.instanceof(bitcore.Address);
+      uri.address.should.be.instanceof(orecore.Address);
       uri.network.should.equal(Networks.livenet);
     });
 
@@ -87,19 +90,19 @@ describe('URI', function() {
       uri = URI.fromString('galactrum:GMeo4uMPsr1ZkNP1iu3dLDBpR5AhmKnK4P?amount=123.22');
       uri.address.toString().should.equal('GMeo4uMPsr1ZkNP1iu3dLDBpR5AhmKnK4P');
       uri.amount.should.equal(12322000000);
-      expect(uri.otherParam).to.be.undefined();
+      expect(uri.otherParam).to.be.undefined;
     });
 
     it('parses a testnet address', function() {
       uri = new URI('galactrum:yRM2dX5HJyvbFaGubkVPio9W6Y8ELDnJrm');
-      uri.address.should.be.instanceof(bitcore.Address);
+      uri.address.should.be.instanceof(orecore.Address);
       uri.network.should.equal(Networks.testnet);
     });
 
     it('stores unknown parameters as "extras"', function() {
       uri = new URI('galactrum:GMeo4uMPsr1ZkNP1iu3dLDBpR5AhmKnK4P?amount=1.2&other=param');
-      uri.address.should.be.instanceof(bitcore.Address);
-      expect(uri.other).to.be.undefined();
+      uri.address.should.be.instanceof(orecore.Address);
+      expect(uri.other).to.be.undefined;
       uri.extras.other.should.equal('param');
     });
 
@@ -112,7 +115,7 @@ describe('URI', function() {
     it('has no false negative when checking supported features', function() {
       uri = new URI('galactrum:GMeo4uMPsr1ZkNP1iu3dLDBpR5AhmKnK4P?amount=1.2&other=param&' +
                     'req-required=param', ['req-required']);
-      uri.address.should.be.instanceof(bitcore.Address);
+      uri.address.should.be.instanceof(orecore.Address);
       uri.amount.should.equal(120000000);
       uri.extras.other.should.equal('param');
       uri.extras['req-required'].should.equal('param');
@@ -127,13 +130,13 @@ describe('URI', function() {
     uri = new URI({
       address: 'GMeo4uMPsr1ZkNP1iu3dLDBpR5AhmKnK4P'
     });
-    uri.address.should.be.instanceof(bitcore.Address);
+    uri.address.should.be.instanceof(orecore.Address);
     uri.network.should.equal(Networks.livenet);
 
     uri = new URI({
       address: 'yRM2dX5HJyvbFaGubkVPio9W6Y8ELDnJrm'
     });
-    uri.address.should.be.instanceof(bitcore.Address);
+    uri.address.should.be.instanceof(orecore.Address);
     uri.network.should.equal(Networks.testnet);
 
     uri = new URI({
@@ -141,9 +144,9 @@ describe('URI', function() {
       amount: 120000000,
       other: 'param'
     });
-    uri.address.should.be.instanceof(bitcore.Address);
+    uri.address.should.be.instanceof(orecore.Address);
     uri.amount.should.equal(120000000);
-    expect(uri.other).to.be.undefined();
+    expect(uri.other).to.be.undefined;
     uri.extras.other.should.equal('param');
 
     (function() {
@@ -159,7 +162,7 @@ describe('URI', function() {
       other: 'param',
       'req-required': 'param'
     }, ['req-required']);
-    uri.address.should.be.instanceof(bitcore.Address);
+    uri.address.should.be.instanceof(orecore.Address);
     uri.amount.should.equal(120000000);
     uri.extras.other.should.equal('param');
     uri.extras['req-required'].should.equal('param');

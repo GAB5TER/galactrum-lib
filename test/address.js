@@ -1,3 +1,6 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
 /* jshint maxstatements: 30 */
@@ -6,11 +9,11 @@ var chai = require('chai');
 var should = chai.should();
 var expect = chai.expect;
 
-var bitcore = require('..');
-var PublicKey = bitcore.PublicKey;
-var Address = bitcore.Address;
-var Script = bitcore.Script;
-var Networks = bitcore.Networks;
+var orecore = require('..');
+var PublicKey = orecore.PublicKey;
+var Address = orecore.Address;
+var Script = orecore.Script;
+var Networks = orecore.Networks;
 
 var validbase58 = require('./data/galactrumd/base58_keys_valid.json');
 var invalidbase58 = require('./data/galactrumd/base58_keys_invalid.json');
@@ -39,7 +42,7 @@ describe('Address', function() {
     }).should.throw('Third argument must be "pubkeyhash" or "scripthash"');
   });
 
-  describe('bitcoind compliance', function() {
+  describe('galactrumd compliance', function() {
     validbase58.map(function(d) {
       if (!d[2].isPrivkey) {
         it('should describe address ' + d[0] + ' as valid', function() {
@@ -252,7 +255,7 @@ describe('Address', function() {
     it('should error because of unrecognized data format', function() {
       (function() {
         return new Address(new Error());
-      }).should.throw(bitcore.errors.InvalidArgument);
+      }).should.throw(orecore.errors.InvalidArgument);
     });
 
     it('should error because of incorrect format for pubkey hash', function() {
@@ -275,25 +278,25 @@ describe('Address', function() {
 
     it('should error because of incorrect length buffer for transform buffer', function() {
       (function() {
-        return Address._transformBuffer(new Buffer(20));
+        return Address._transformBuffer(Buffer.alloc(20));
       }).should.throw('Address buffers must be exactly 21 bytes.');
     });
 
     it('should error because of incorrect type for pubkey transform', function() {
       (function() {
-        return Address._transformPublicKey(new Buffer(20));
+        return Address._transformPublicKey(Buffer.alloc(20));
       }).should.throw('Address must be an instance of PublicKey.');
     });
 
     it('should error because of incorrect type for script transform', function() {
       (function() {
-        return Address._transformScript(new Buffer(20));
+        return Address._transformScript(Buffer.alloc(20));
       }).should.throw('Invalid Argument: script must be a Script instance');
     });
 
     it('should error because of incorrect type for string transform', function() {
       (function() {
-        return Address._transformString(new Buffer(20));
+        return Address._transformString(Buffer.alloc(20));
       }).should.throw('data parameter supplied is not a string.');
     });
 
@@ -455,7 +458,7 @@ describe('Address', function() {
     it('will fail with invalid state', function() {
       expect(function() {
         return Address.fromObject('¹');
-      }).to.throw(bitcore.errors.InvalidState);
+      }).to.throw(orecore.errors.InvalidState);
     });
   });
 

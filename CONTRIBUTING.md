@@ -1,7 +1,6 @@
-Contributing to Orecore
-=======
+Contributing to orecore-lib
 
-We're working hard to make *Orecore* the most powerful JavaScript library for working with Galactrum. Our goal is to have *Orecore* be a library that can be used by anyone interested in Galactrum, and to level expertise differences with great design and documentation.
+We're working hard to make *orecore-lib* the most powerful JavaScript library for working with Galactrum. Our goal is to have *orecore-lib* be a library that can be used by anyone interested in Galactrum, and to level expertise differences with great design and documentation.
 
 ## Community
 
@@ -11,13 +10,13 @@ If there are any questions, etc., please feel to ask in our community [Discord c
 
 Ideally, please make sure to run:
 
-* `gulp test` passes all the tests (We run tests against Node.js v0.10, v0.12, io.js, and modern browsers)
-* `gulp coverage` covers 100% of the branches of your code (See `coverage/lcov-report/index.html` for details)
-* `gulp lint` doesn't complain about your changes
+* `npm run test` passes all the tests (We run tests against Node.js v6, v8, v10 and modern browsers)
+* `npm run coverage` covers 100% of the branches of your code (See `coverage/lcov-report/index.html` for details)
+* `npm run lint` doesn't complain about your changes
 
 ## Design Guidelines
 
-These are some global design goals in orecore that any change must adhere.
+These are some global design goals in orecore-lib that any change must adhere.
 
 ### D1 - Naming Matters
 
@@ -37,7 +36,7 @@ Write a test for all your code. We encourage Test Driven Development so we know 
 
 Interfaces should accept as many types of arguments as possible, so there's no mental tax on using them: we want to avoid questions such as "should I use a string here or a buffer?", "what happens if I'm not sure if the type of this variable is an Address instance or a string with it encoded in base-58?" or "what kind of object will I receive after calling this function?".
 
-Accept a wide variety of use cases and arguments, always return an internal form of an object. For example, the class `PublicKey` can accept strings or buffers with a DER encoded public key (either compressed or uncompressed), another PublicKey, a PrivateKey, or a Point, an instance of the `elliptic.js` library with the point in bitcoin's elliptic curve that represents the public key.
+Accept a wide variety of use cases and arguments, always return an internal form of an object. For example, the class `PublicKey` can accept strings or buffers with a DER encoded public key (either compressed or uncompressed), another PublicKey, a PrivateKey, or a Point, an instance of the `elliptic.js` library with the point in Galactrum's elliptic curve that represents the public key.
 
 ### D4 - Consistency Everywhere
 
@@ -88,7 +87,7 @@ var bufferUtil = require('./util/buffer');
 
 #### G7 - Standard Methods
 
-When possible, orecore objects should have standard methods on an instance prototype:
+When possible, orecore-lib objects should have standard methods on an instance prototype:
 * `toObject/toJSON` - A plain JavaScript object that `JSON.stringify` can call
 * `toString` - A string representation of the instance
 * `toBuffer` - A hex Buffer
@@ -98,7 +97,7 @@ These should have a matching static method that can be used for instantiation:
 * `fromString` - Should be able to instantiate with output from `toString`
 * `fromBuffer` - Should likewise be able to instantiate from output from `toBuffer`
 
-`JSON.stringify` and `JSON.parse` are expected to be handled outside of the scope of orecore methods. For example, calling `JSON.stringify` on a orecore object will behave as expected and call `transaction.toJSON()` and then stringify it:
+`JSON.stringify` and `JSON.parse` are expected to be handled outside of the scope of orecore-lib methods. For example, calling `JSON.stringify` on a orecore object will behave as expected and call `transaction.toJSON()` and then stringify it:
 
 ```javascript
 var transactionString = JSON.stringify(transaction);
@@ -113,12 +112,11 @@ var tx = new Transaction(data);
 
 ### Errors
 
-#### E1 - Use bitcore.Errors
+#### E1 - Use orecore.Errors
 
 We've designed a structure for Errors to follow and are slowly migrating to it.
 
 Usage:
-* Errors are generated in the file `lib/errors/index.js` by invoking `gulp errors`.
 * The specification for errors is written in the `lib/errors/spec.js` file.
 * Whenever a new class is created, add a generic error for that class in `lib/errors/spec.js`.
 * Specific errors for that class should subclass that error. Take a look at the structure in `lib/errors/spec.js`, it should be clear how subclasses are generated from that file.
@@ -255,11 +253,11 @@ git push origin your_branch_name
 git push origin feature/some-new-stuff
 git push origin fix/some-bug
 ```
-Finally go to [github.com/galactrum/galactrum](https://github.com/galactrum/galactrum) in your web browser and issue a new pull request.
+Finally go to [github.com/GAB5TER/orecore-lib](https://github.com/GAB5TER/orecore-lib) in your web browser and issue a new pull request.
 
-Main contributors will review your code and possibly ask for changes before your code is pulled in to the main repository.  We'll check that all tests pass, review the coding style, and check for general code correctness. If everything is OK, we'll merge your pull request and your code will be part of orecore.
+Main contributors will review your code and possibly ask for changes before your code is pulled in to the main repository.  We'll check that all tests pass, review the coding style, and check for general code correctness. If everything is OK, we'll merge your pull request and your code will be part of orecore-lib.
 
 If you have any questions feel free to post them to
-[github.com/galactrum/galactrum/issues](https://github.com/galactrum/galactrum/issues).
+[github.com/GAB5TER/orecore-lib/issues](https://github.com/GAB5TER/orecore-lib/issues).
 
 Thanks for your time and code!

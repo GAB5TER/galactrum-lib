@@ -174,3 +174,9 @@ var transaction = new Transaction()
 console.log(transaction.getLockTime());
 // output similar to: Sun Nov 30 2025 00:00:00 GMT-0300 (ART)
 ```
+
+## Simple Transaction
+
+Since v0.13, simple transactions (having no more than 4 inputs), are entitled to an auto Instant Send upgrade (if mempool size is less than 10% full). 
+
+A method `isSimpleTransaction()` will simplify that verification for you.  

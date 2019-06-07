@@ -1,3 +1,6 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
 /* jshint unused: false */
@@ -5,15 +8,13 @@ var _ = require('lodash');
 var assert = require('assert');
 var should = require('chai').should();
 var expect = require('chai').expect;
-var bitcore = require('..');
-var buffer = require('buffer');
-var errors = bitcore.errors;
-var hdErrors = bitcore.errors.HDPublicKey;
-var BufferUtil = bitcore.util.buffer;
-var HDPrivateKey = bitcore.HDPrivateKey;
-var HDPublicKey = bitcore.HDPublicKey;
-var Base58Check = bitcore.encoding.Base58Check;
-var Networks = bitcore.Networks;
+var orecore = require('..');
+var errors = orecore.errors;
+var hdErrors = orecore.errors.HDPublicKey;
+var BufferUtil = orecore.util.buffer;
+var HDPublicKey = orecore.HDPublicKey;
+var Base58Check = orecore.encoding.Base58Check;
+var Networks = orecore.Networks;
 
 var xprivkey = 'xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmPGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi';
 var xpubkey = 'xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8';
@@ -78,7 +79,7 @@ describe('HDPublicKey interface', function() {
     describe('xpubkey string serialization errors', function() {
       it('fails on invalid length', function() {
         expectFailBuilding(
-          Base58Check.encode(new buffer.Buffer([1, 2, 3])),
+          Base58Check.encode(Buffer.from([1, 2, 3])),
           hdErrors.InvalidLength
         );
       });

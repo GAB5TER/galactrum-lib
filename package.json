@@ -1,13 +1,14 @@
 {
   "name": "orecore-lib",
-  "version": "0.15.7",
+  "version": "0.17.4",
   "description": "A pure and powerful JavaScript Galactrum library.",
   "author": "BitPay <dev@bitpay.com>",
   "main": "index.js",
   "scripts": {
-    "lint": "jshint . || true",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "npm run test:node && npm run lint",
-    "test:node": "mocha --no-timeouts --recursive",
+    "test:node": "mocha $NODE_DEBUG_OPTION --no-timeouts --recursive",
     "test:browser": "karma start ./karma.conf.js --single-run",
     "coverage": "nyc mocha --recursive",
     "build": "webpack --display-error-details"
@@ -70,6 +71,10 @@
       "email": "alex@werner.fr"
     },
     {
+      "name": "Anton Suprunchuk",
+      "email": "antouhou@gmail.com"
+    },
+    {
       "name": "GAB5TER",
       "email": "GAB5TER@protonmail.com"
     }
@@ -103,36 +108,34 @@
   },
   "dependencies": {
     "orehash": "GAB5TER/orehash",
-    "@dashevo/x11-hash-js": "^1.0.2",
-    "bn.js": "=2.0.4",
-    "bs58": "=2.0.0",
-    "buffer-compare": "=1.0.0",
-    "elliptic": "=3.0.3",
+    "bn.js": "=4.11.8",
+    "bs58": "=4.0.1",
+    "elliptic": "=6.4.1",
     "inherits": "=2.0.1",
     "lodash": "^4.17.11",
-    "sha512": "=0.0.1",
-    "cryptiles": ">=4.1.2"
+    "unorm": "^1.4.1"
   },
   "devDependencies": {
     "brfs": "^2.0.1",
-    "chai": "^1.10.0",
-    "gulp": "^4.0.0",
-    "jshint": "^2.9.6",
-    "karma": "^3.0.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.11.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "karma": "^4.0.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.2.0",
-    "karma-detect-browsers": "^2.2.6",
+    "karma-detect-browsers": "^2.3.3",
     "karma-firefox-launcher": "^1.1.0",
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.5",
     "karma-webpack": "^3.0.5",
-    "mocha": "^5.0.4",
+    "mocha": "^5.2.0",
     "nyc": "^13.1.0",
     "raw-loader": "^0.5.1",
-    "sinon": "^4.2.2",
+    "sinon": "^4.5.0",
     "transform-loader": "^0.2.4",
-    "uglifyjs-webpack-plugin": "^1.2.4",
-    "webpack": "^3.10.0"
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "webpack": "^3.12.0"
   },
   "license": "MIT"
 }

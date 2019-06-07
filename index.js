@@ -1,70 +1,79 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
-var bitcore = module.exports;
+var orecore = module.exports;
 
 // module information
-bitcore.version = 'v' + require('./package.json').version;
-bitcore.versionGuard = function(version) {
+orecore.version = 'v' + require('./package.json').version;
+orecore.versionGuard = function(version) {
   if (version !== undefined) {
     var message = 'More than one instance of orecore-lib found. ' +
       'Please make sure that you are not mixing instances of classes of the different versions of galactrum.';
     console.warn(message);
   }
 };
-bitcore.versionGuard(global._bitcore);
-global._bitcore = bitcore.version;
+orecore.versionGuard(global._orecore);
+global._orecore = orecore.version;
 
 // crypto
-bitcore.crypto = {};
-bitcore.crypto.BN = require('./lib/crypto/bn');
-bitcore.crypto.ECDSA = require('./lib/crypto/ecdsa');
-bitcore.crypto.Hash = require('./lib/crypto/hash');
-bitcore.crypto.Random = require('./lib/crypto/random');
-bitcore.crypto.Point = require('./lib/crypto/point');
-bitcore.crypto.Signature = require('./lib/crypto/signature');
+orecore.crypto = {};
+orecore.crypto.BN = require('./lib/crypto/bn');
+orecore.crypto.ECDSA = require('./lib/crypto/ecdsa');
+orecore.crypto.Hash = require('./lib/crypto/hash');
+orecore.crypto.Random = require('./lib/crypto/random');
+orecore.crypto.Point = require('./lib/crypto/point');
+orecore.crypto.Signature = require('./lib/crypto/signature');
 
 // encoding
-bitcore.encoding = {};
-bitcore.encoding.Base58 = require('./lib/encoding/base58');
-bitcore.encoding.Base58Check = require('./lib/encoding/base58check');
-bitcore.encoding.BufferReader = require('./lib/encoding/bufferreader');
-bitcore.encoding.BufferWriter = require('./lib/encoding/bufferwriter');
-bitcore.encoding.Varint = require('./lib/encoding/varint');
+orecore.encoding = {};
+orecore.encoding.Base58 = require('./lib/encoding/base58');
+orecore.encoding.Base58Check = require('./lib/encoding/base58check');
+orecore.encoding.BufferReader = require('./lib/encoding/bufferreader');
+orecore.encoding.BufferWriter = require('./lib/encoding/bufferwriter');
+orecore.encoding.Varint = require('./lib/encoding/varint');
 
 // utilities
-bitcore.util = {};
-bitcore.util.buffer = require('./lib/util/buffer');
-bitcore.util.js = require('./lib/util/js');
-bitcore.util.preconditions = require('./lib/util/preconditions');
+orecore.util = {};
+orecore.util.buffer = require('./lib/util/buffer');
+orecore.util.js = require('./lib/util/js');
+orecore.util.preconditions = require('./lib/util/preconditions');
+orecore.util.hashUtil = require('./lib/util/hashutil');
+orecore.util.merkleTree = require('./lib/util/merkletree');
 
 // errors thrown by the library
-bitcore.errors = require('./lib/errors');
+orecore.errors = require('./lib/errors');
 
-// main bitcoin library
-bitcore.Address = require('./lib/address');
-bitcore.Block = require('./lib/block');
-bitcore.MerkleBlock = require('./lib/block/merkleblock');
-bitcore.BlockHeader = require('./lib/block/blockheader');
-bitcore.HDPrivateKey = require('./lib/hdprivatekey.js');
-bitcore.HDPublicKey = require('./lib/hdpublickey.js');
-bitcore.Networks = require('./lib/networks');
-bitcore.Opcode = require('./lib/opcode');
-bitcore.PrivateKey = require('./lib/privatekey');
-bitcore.PublicKey = require('./lib/publickey');
-bitcore.Script = require('./lib/script');
-bitcore.Transaction = require('./lib/transaction');
-bitcore.GovObject = require('./lib/govobject');
-bitcore.URI = require('./lib/uri');
-bitcore.Unit = require('./lib/unit');
-bitcore.Message = require('./lib/message');
+// main galactrum library
+orecore.Address = require('./lib/address');
+orecore.Block = require('./lib/block');
+orecore.MerkleBlock = require('./lib/block/merkleblock');
+orecore.SimplifiedMNList = require('./lib/deterministicmnlist/SimplifiedMNList');
+orecore.SimplifiedMNListDiff = require('./lib/deterministicmnlist/SimplifiedMNListDiff');
+orecore.SimplifiedMNListEntry = require('./lib/deterministicmnlist/SimplifiedMNListEntry');
+orecore.BlockHeader = require('./lib/block/blockheader');
+orecore.HDPrivateKey = require('./lib/hdprivatekey.js');
+orecore.HDPublicKey = require('./lib/hdpublickey.js');
+orecore.Networks = require('./lib/networks');
+orecore.Opcode = require('./lib/opcode');
+orecore.PrivateKey = require('./lib/privatekey');
+orecore.PublicKey = require('./lib/publickey');
+orecore.Script = require('./lib/script');
+orecore.Transaction = require('./lib/transaction');
+orecore.GovObject = require('./lib/govobject');
+orecore.URI = require('./lib/uri');
+orecore.Unit = require('./lib/unit');
+orecore.Message = require('./lib/message');
+orecore.Mnemonic = require('./lib/mnemonic');
 
 // dependencies, subject to change
-bitcore.deps = {};
-bitcore.deps.bnjs = require('bn.js');
-bitcore.deps.bs58 = require('bs58');
-bitcore.deps.Buffer = Buffer;
-bitcore.deps.elliptic = require('elliptic');
-bitcore.deps._ = require('lodash');
+orecore.deps = {};
+orecore.deps.bnjs = require('bn.js');
+orecore.deps.bs58 = require('bs58');
+orecore.deps.Buffer = Buffer;
+orecore.deps.elliptic = require('elliptic');
+orecore.deps._ = require('lodash');
 
 // Internal usage, exposed for testing/advanced tweaking
-bitcore.Transaction.sighash = require('./lib/transaction/sighash');
+orecore.Transaction.sighash = require('./lib/transaction/sighash');

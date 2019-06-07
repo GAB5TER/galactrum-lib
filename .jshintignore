@@ -1,5 +1,0 @@
-./node_modules/*
-galactrum-lib.js
-galactrum-lib.min.js
-./test/*
-./dist/*

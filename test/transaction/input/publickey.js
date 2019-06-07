@@ -1,9 +1,12 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
 var should = require('chai').should();
-var bitcore = require('../../..');
-var Transaction = bitcore.Transaction;
-var PrivateKey = bitcore.PrivateKey;
+var orecore = require('../../..');
+var Transaction = orecore.Transaction;
+var PrivateKey = orecore.PrivateKey;
 
 describe('PublicKeyInput', function() {
 

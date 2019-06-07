@@ -1,9 +1,12 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
 var expect = require('chai').expect;
 var should = require('chai').should();
-var bitcore = require('..');
-var networks = bitcore.Networks;
+var orecore = require('..');
+var networks = orecore.Networks;
 
 describe('Networks', function() {
 
@@ -17,8 +20,8 @@ describe('Networks', function() {
 
   it('will enable/disable regtest Network', function() {
     networks.enableRegtest();
-    networks.testnet.networkMagic.should.deep.equal(new Buffer('fcc1b7dc', 'hex'));
-    networks.testnet.port.should.equal(19994);
+    networks.testnet.networkMagic.should.deep.equal(Buffer.from('fcc1b7dc', 'hex'));
+    networks.testnet.port.should.equal(29999);
     networks.testnet.dnsSeeds.should.deep.equal([]);
     networks.testnet.regtestEnabled.should.equal(true);
 
@@ -26,7 +29,6 @@ describe('Networks', function() {
     networks.testnet.networkMagic.should.deep.equal(new Buffer('b1ded0ab', 'hex'));
     networks.testnet.port.should.equal(16270);
     networks.testnet.dnsSeeds.should.deep.equal([
-     'testnet.galactrum.network',
      'seed1.testnet.galactrum.network'
     ]);
   });
@@ -58,7 +60,7 @@ describe('Networks', function() {
       if (key !== 'networkMagic') {
         customnet[key].should.equal(custom[key]);
       } else {
-        var expected = new Buffer('e7beb4d4', 'hex');
+        var expected = Buffer.from('e7beb4d4', 'hex');
         customnet[key].should.deep.equal(expected);
       }
     }

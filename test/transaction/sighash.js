@@ -1,12 +1,14 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
-var buffer = require('buffer');
-
 var chai = require('chai');
+var expect = chai.expect;
 var should = chai.should();
-var bitcore = require('../../');
-var Script = bitcore.Script;
-var Transaction = bitcore.Transaction;
+var orecore = require('../../');
+var Script = orecore.Script;
+var Transaction = orecore.Transaction;
 var sighash = Transaction.sighash;
 
 var vectors_sighash = require('../data/sighash.json');
@@ -18,17 +20,19 @@ describe('sighash', function() {
       // First element is just a row describing the next ones
       return;
     }
-    it('test vector from bitcoind #' + i + ' (' + vector[4].substring(0, 16) + ')', function() {
-      var txbuf = new buffer.Buffer(vector[0], 'hex');
-      var scriptbuf = new buffer.Buffer(vector[1], 'hex');
+    it('test vector from galactrumd #' + i + ' (' + vector[4].substring(0, 16) + ')', function() {
+      var txbuf = Buffer.from(vector[0], 'hex');
+      var scriptbuf = Buffer.from(vector[1], 'hex');
       var subscript = Script(scriptbuf);
       var nin = vector[2];
       var nhashtype = vector[3];
-      var sighashbuf = new buffer.Buffer(vector[4], 'hex');
+      var sighashbuf = Buffer.from(vector[4], 'hex');
       var tx = new Transaction(txbuf);
 
       //make sure transacion to/from buffer is isomorphic
-      tx.uncheckedSerialize().should.equal(txbuf.toString('hex'));
+      var actual = tx.uncheckedSerialize();
+      var expected = txbuf.toString('hex');
+      actual.should.equal(expected);
 
       //sighash ought to be correct
       sighash.sighash(tx, nhashtype, nin, subscript).toString('hex').should.equal(sighashbuf.toString('hex'));

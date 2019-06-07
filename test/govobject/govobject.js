@@ -1,3 +1,6 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 /* jshint unused: false */
 /* jshint latedef: false */
 var should = require('chai').should();
@@ -5,10 +8,10 @@ var expect = require('chai').expect;
 var _ = require('lodash');
 var sinon = require('sinon');
 
-var bitcore = require('../..');
-var GovObject = bitcore.GovObject;
-var Proposal = bitcore.GovObject.Proposal;
-var errors = bitcore.errors;
+var orecore = require('../..');
+var GovObject = orecore.GovObject;
+var Proposal = orecore.GovObject.Proposal;
+var errors = orecore.errors;
 
 
 var BufferReader = require('../../lib/encoding/bufferreader');
@@ -253,7 +256,7 @@ describe('GovObject', function(){
     });
     it('should output null data-hex value by default', function(){
       var govObject = new GovObject;
-      expect(govObject.dataHex()).to.be.null();
+      expect(govObject.dataHex()).to.be.null;
     })
 
     it('should throw error when creating a bad new GovObject', function(){

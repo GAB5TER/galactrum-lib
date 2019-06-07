@@ -1,3 +1,6 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
 /* jshint unused: false */
@@ -6,12 +9,12 @@ var should = require('chai').should();
 var expect = require('chai').expect;
 var _ = require('lodash');
 
-var bitcore = require('../..');
-var Transaction = bitcore.Transaction;
-var TransactionSignature = bitcore.Transaction.Signature;
-var Script = bitcore.Script;
-var PrivateKey = bitcore.PrivateKey;
-var errors = bitcore.errors;
+var orecore = require('../..');
+var Transaction = orecore.Transaction;
+var TransactionSignature = orecore.Transaction.Signature;
+var Script = orecore.Script;
+var PrivateKey = orecore.PrivateKey;
+var errors = orecore.errors;
 
 describe('TransactionSignature', function() {
 
@@ -104,7 +107,7 @@ describe('TransactionSignature', function() {
     it('can deserialize when signature is a buffer', function() {
       var signature = getSignatureFromTransaction();
       var serialized = signature.toObject();
-      serialized.signature = new Buffer(serialized.signature, 'hex');
+      serialized.signature = Buffer.from(serialized.signature, 'hex');
       expect(TransactionSignature.fromObject(serialized).toObject()).to.deep.equal(signature.toObject());
     });
 

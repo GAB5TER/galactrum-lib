@@ -1,3 +1,6 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 /* jshint unused: false */
 
@@ -5,13 +8,13 @@ var should = require('chai').should();
 var expect = require('chai').expect;
 var _ = require('lodash');
 
-var bitcore = require('../../..');
-var Transaction = bitcore.Transaction;
-var PrivateKey = bitcore.PrivateKey;
-var Address = bitcore.Address;
-var Script = bitcore.Script;
-var Networks = bitcore.Networks;
-var Signature = bitcore.crypto.Signature;
+var orecore = require('../../..');
+var Transaction = orecore.Transaction;
+var PrivateKey = orecore.PrivateKey;
+var Address = orecore.Address;
+var Script = orecore.Script;
+var Networks = orecore.Networks;
+var Signature = orecore.crypto.Signature;
 
 describe('PublicKeyHashInput', function() {
 

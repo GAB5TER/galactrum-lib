@@ -1,7 +1,10 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 
-var bitcore = require('../..');
-var Random = bitcore.crypto.Random;
+var orecore = require('../..');
+var Random = orecore.crypto.Random;
 var should = require('chai').should();
 var expect = require('chai').expect;
 

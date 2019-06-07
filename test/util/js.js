@@ -1,11 +1,14 @@
+/* eslint-disable */
+// TODO: Remove previous line and work through linting issues at next edit
+
 'use strict';
 /* jshint unused: false */
 
 var should = require('chai').should();
 var expect = require('chai').expect;
 
-var bitcore = require('../..');
-var JSUtil = bitcore.util.js;
+var orecore = require('../..');
+var JSUtil = orecore.util.js;
 
 describe('js utils', function() {
 
