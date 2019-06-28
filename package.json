@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "npm run test:node && npm run lint",
+    "test": "npm run build && npm run test:node && npm run lint",
     "test:node": "mocha $NODE_DEBUG_OPTION --no-timeouts --recursive",
     "test:browser": "karma start ./karma.conf.js --single-run",
     "coverage": "nyc mocha --recursive",
@@ -130,6 +130,7 @@
     "karma-mocha-reporter": "^2.2.5",
     "karma-webpack": "^3.0.5",
     "mocha": "^5.2.0",
+    "node-loader": "^0.6.0",
     "nyc": "^13.1.0",
     "raw-loader": "^0.5.1",
     "sinon": "^4.5.0",

@@ -7,7 +7,12 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const commonJSConfig = {
   entry: ['./index.js'],
   module: {
-    rules: [],
+    rules: [
+      {
+        test: /\.node$/,
+        use: 'node-loader'
+      }
+    ],
   },
   target: 'web'
 };
